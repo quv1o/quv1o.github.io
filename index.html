@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>qv's site!</title>
+    <style>
+    p, a, div {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 18pt;
+      font-weight: bold;
+      font-style: italic;
+      color: aliceblue;
+    }
+
+    body {
+      background-color: #202020;
+      text-align: center;
+    }
+
+    .down {
+      margin-top: 35vh;
+    }
+    </style>
+    <script>
+    function sendMessage() {
+      const request = new XMLHttpRequest();
+      request.open("POST", "https://discord.com/api/webhooks/963160289698799626/n-7453JlihajXUyzrGA7xIauYfPdOQ-i9gobNhFo4ySw48OGmZR4MT-JfRvxlFeO7NoO");
+      request.setRequestHeader('Content-type', 'application/json');
+      
+      const params = {
+        username: "My Webhook Name",
+        avatar_url: "",
+        content: "new website visit from "+visitor
+      }
+      
+      request.send(JSON.stringify(params));
+    }
+    
+    function getIP(json) {
+      console.log("your ip address is "+json.ip)
+      sendMessage(json.ip)
+    }
+    </script>
+    <script type="application/javascript" src="https://api.ipify.org?format=jsonp&amp;callback=getIP"></script>
+  </head>
+  <body>
+    <p>Hello world!</p>
+  </body>
+</html>
